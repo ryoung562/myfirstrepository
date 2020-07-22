@@ -12,3 +12,10 @@ spec:
           cpu: "125m"
         limits:
           memory: "1Gi"
+      volumeMounts:
+        - name: docker-config
+          mountPath: /kaniko/.docker/
+  volumes:
+    - name: docker-config
+      configMap:
+        name: docker-config
