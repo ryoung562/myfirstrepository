@@ -11,7 +11,6 @@ pipeline {
           }
         }
         steps {
-          sh "cat /kaniko/.docker/config.json"
           sh "/kaniko/executor \
                 --context=git://github.com/rkamradt/myfirstrepository.git#refs/heads/master \
                 --dockerfile=Dockerfile \
