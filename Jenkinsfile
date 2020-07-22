@@ -12,8 +12,8 @@ pipeline {
         }
         steps {
           sh "/kaniko/executor \
-                --context=git://github.com/rkamradt/myfirstrepository.git#refs/heads/master \
-                --dockerfile=Dockerfile \
+                --dockerfile `pwd`/Dockerfile \
+                --context `pwd` \
                 --verbosity=debug \
                 --destination=docker.io/rlkamradt/myfirstrepository:latest"
         }
