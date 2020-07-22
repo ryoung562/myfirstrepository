@@ -11,11 +11,14 @@ pipeline {
           }
         }
         steps {
-          sh "/kaniko/executor \
+          git 'https://github.com/rkamradt/myfirstrepository'
+          container(name: 'kaniko') {
+            sh "/kaniko/executor \
                 --dockerfile `pwd`/Dockerfile \
                 --context `pwd` \
                 --verbosity=debug \
                 --destination=docker.io/rlkamradt/myfirstrepository:latest"
+          }
         }
     }
     stage('Test') {
