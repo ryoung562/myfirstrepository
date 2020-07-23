@@ -26,8 +26,10 @@ pipeline {
     }
     stage('Test') {
       steps {
+        container(name: 'kubectl') {
           sh "kubectl apply -n test -f mongodb.yaml"
           sh "kubectl apply -n test -f myfirstrepository"
+        }
       }
     }
     stage('Deploy') {
