@@ -12,15 +12,10 @@ spec:
           cpu: "125m"
         limits:
           memory: "1Gi"
-        volumeMounts:
-          - name: jenkins-docker-cfg
-            mountPath: /kaniko/.docker
-      volumes:
-      - name: jenkins-docker-cfg
-        projected:
-          sources:
-          - secret:
-              name: registry-credentials
-              items:
-                - key: .dockerconfigjson
-                  path: config.json
+      volumeMounts:
+        - name: docker-config
+          mountPath: /kaniko/.docker
+    volumes:
+      - name: docker-config
+        configMap:
+          name: docker-config
