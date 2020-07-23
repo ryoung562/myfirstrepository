@@ -40,6 +40,9 @@ module.exports.addListToRequest = async (req,res,next) => {
     const db = client.db(dbName)
 
     req.list = await db.collection('inserts').find({}).toArray();
+    if(!req.list) {
+      req.list = [ "empty" ]
+    }
   } catch (err) {
     console.log(err.stack)
   }

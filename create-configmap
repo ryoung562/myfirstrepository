@@ -1,4 +1,4 @@
-export CREDS=`echo $DOCKERHUB_USER:$DOCKERHUB_PASSWORD | base64`
+export CREDS=`echo -n "$DOCKERHUB_USER:$DOCKERHUB_PASSWORD" | base64`
 echo credentials = $CREDS
 
 cat <<EOF | kubectl apply -f -
