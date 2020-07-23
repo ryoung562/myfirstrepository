@@ -6,6 +6,12 @@ spec:
   containers:
     - name: jnlp
       workingDir: /tmp/jenkins
+    - name: kubectl
+      image: gcr.io/cloud-builders/kubectl
+      workingDir: /tmp/jenkins
+      command:
+      - cat
+      tty: true
     - name: kaniko
       workingDir: /tmp/jenkins
       image: gcr.io/kaniko-project/executor:debug-v0.19.0
