@@ -1,17 +1,18 @@
 apiVersion: v1
 kind: Pod
+metadata:
+  name: kaniko
 spec:
   containers:
+    - name: jnlp
+      workingDir: /tmp/jenkins
     - name: kaniko
+      workingDir: /tmp/jenkins
       image: gcr.io/kaniko-project/executor:debug-v0.19.0
-      command: ["tail", "-f", "/dev/null"]
       imagePullPolicy: Always
-      resources:
-        requests:
-          memory: "1Gi"
-          cpu: "125m"
-        limits:
-          memory: "1Gi"
+      command:
+      - /busybox/cat
+      tty: true
       volumeMounts:
         - name: docker-config
           mountPath: /kaniko/.docker

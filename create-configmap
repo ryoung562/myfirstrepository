@@ -1,0 +1,17 @@
+export CREDS=`echo $DOCKERHUB_USER:$DOCKERHUB_PASSWORD | base64`
+echo credentials = $CREDS
+
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: docker-config
+data:
+  config.json: "\
+  {\"auths\": \
+    {\"https://index.docker.io/v2/\": \
+      {\"auth\": \"$CREDS\"\
+    }\
+  }\
+}"
+EOF
