@@ -16,7 +16,6 @@ pipeline {
             sh "/kaniko/executor \
                 --dockerfile `pwd`/Dockerfile \
                 --context `pwd` \
-                --verbosity=debug \
                 --destination=docker.io/rlkamradt/myfirstrepository:latest"
           }
         }
