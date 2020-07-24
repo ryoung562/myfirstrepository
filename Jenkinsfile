@@ -25,6 +25,14 @@ pipeline {
         }
     }
     stage('Test') {
+      agent {
+        kubernetes {
+          label 'kaniko'
+          idleMinutes 5
+          yamlFile 'kaniko-pod.yaml'
+          defaultContainer 'kaniko'
+        }
+      }
       steps {
         container(name: 'kubectl') {
           sh "kubectl apply -n test -f mongodb.yaml"
