@@ -40,8 +40,11 @@ pipeline {
           kubectl delete -n test --ignore-not-found=true -f myfirstrepository.yaml
           kubectl apply -n test -f myfirstrepository.yaml
           kubectl apply -n test -f myfirstrepositorytest.yaml
-          #kubectl wait -n test --for=condition=Ready pod/myfirstrepositorytest
-          kubectl logs -n test pod/myfirstrepositorytest -f 
+          kubectl logs -n test pod/myfirstrepositorytest -f
+          exit_code = kubectl get pods -n test myfirstrepositorytest \
+            -o jsonpath=\
+            '{.status.containerStatuses[0].lastState.terminated.exitCode}'
+          echo $exit_code
           '''
         }
       }
