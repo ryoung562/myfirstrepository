@@ -35,9 +35,14 @@ pipeline {
       }
       steps {
         container(name: 'kubectl') {
-          sh "kubectl apply -n test -f mongodb.yaml"
-          sh "kubectl delete -n test --ignore-not-found=true -f myfirstrepository.yaml"
-          sh "kubectl apply -n test -f myfirstrepository.yaml"
+          sh '''
+          kubectl apply -n test -f mongodb.yaml
+          kubectl delete -n test --ignore-not-found=true -f myfirstrepository.yaml
+          kubectl apply -n test -f myfirstrepository.yaml
+          kubectl apply -n test -f myfirstrepositorytest.yaml
+          kubectl wait -n test --for=condition=Ready pod/myfirstrepositorytest
+          kubectl logs -n -f test pod/myfirstrepositorytest
+          '''
         }
       }
     }

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myfirstrepositorytest
+spec:
+  containers:
+    - name: myfirstrepositorytest
+      image: rlkamradt/myfirstrepositorytest
+      env:
+        - name: SUT_HOST
+        value: myfirstrepository
