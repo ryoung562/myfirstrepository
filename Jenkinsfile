@@ -39,9 +39,10 @@ pipeline {
           kubectl apply -n test -f mongodb.yaml
           kubectl delete -n test --ignore-not-found=true -f myfirstrepository.yaml
           kubectl apply -n test -f myfirstrepository.yaml
+          kubectl delete -n test --ignore-not-found=true pod myfirstrepositorytest
           kubectl apply -n test -f myfirstrepositorytest.yaml
           kubectl logs -n test pod/myfirstrepositorytest -f
-          exit_code = kubectl get pods -n test myfirstrepositorytest \
+          export exit_code = kubectl get pods -n test myfirstrepositorytest \
             -o jsonpath=\
             '{.status.containerStatuses[0].lastState.terminated.exitCode}'
           echo $exit_code
