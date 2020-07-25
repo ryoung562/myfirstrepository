@@ -41,7 +41,7 @@ pipeline {
           kubectl apply -n test -f myfirstrepository.yaml
           kubectl apply -n test -f myfirstrepositorytest.yaml
           #kubectl wait -n test --for=condition=Ready pod/myfirstrepositorytest
-          kubectl logs -n -f test pod/myfirstrepositorytest
+          kubectl logs -n test pod/myfirstrepositorytest -f 
           '''
         }
       }
