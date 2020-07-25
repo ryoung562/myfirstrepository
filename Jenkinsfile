@@ -36,6 +36,7 @@ pipeline {
       steps {
         container(name: 'kubectl') {
           sh "kubectl apply -n test -f mongodb.yaml"
+          sh "kubectl delete -n test --ignore-not-found=true -f myfirstrepository.yaml"
           sh "kubectl apply -n test -f myfirstrepository.yaml"
         }
       }
