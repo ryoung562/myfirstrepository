@@ -8,4 +8,4 @@ spec:
       image: rlkamradt/myfirstrepositorytest
       env:
         - name: SUT_HOST
-          value: myfirstrepository
+          value: myfirstrepository.test.local

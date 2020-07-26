@@ -35,19 +35,7 @@ pipeline {
       }
       steps {
         container(name: 'kubectl') {
-          sh '''
-          kubectl apply -n test -f mongodb.yaml
-          kubectl delete -n test --ignore-not-found=true -f myfirstrepository.yaml
-          kubectl apply -n test -f myfirstrepository.yaml
-          kubectl delete -n test --ignore-not-found=true pod myfirstrepositorytest
-          kubectl apply -n test -f myfirstrepositorytest.yaml
-          kubectl wait -n test --for=condition=initialized pod myfirstrepositorytest
-          kubectl logs -n test myfirstrepositorytest -f
-          export exit_code = kubectl get -n test pod myfirstrepositorytest \
-            -o jsonpath=\
-            '{.status.containerStatuses[0].lastState.terminated.exitCode}'
-          echo $exit_code
-          '''
+          sh "run_test"
         }
       }
     }
