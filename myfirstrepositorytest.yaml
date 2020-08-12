@@ -10,4 +10,4 @@ spec:
         - name: UV_THREADPOOL_SIZE
           value: "128"
         - name: SUT_HOST
-          value: "myfirstrepository"
+          value: "myfirstrepository-service"
