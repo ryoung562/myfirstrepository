@@ -8,6 +8,6 @@ spec:
       image: rlkamradt/myfirstrepositorytest
       env:
         - name: UV_THREADPOOL_SIZE
-          value: 128
+          value: "128"
         - name: SUT_HOST
-          value: myfirstrepository
+          value: "myfirstrepository"
