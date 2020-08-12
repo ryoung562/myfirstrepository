@@ -7,5 +7,7 @@ spec:
     - name: myfirstrepositorytest
       image: rlkamradt/myfirstrepositorytest
       env:
+        - name: UV_THREADPOOL_SIZE
+          value: 128
         - name: SUT_HOST
-          value: myfirstrepository.test.local
+          value: myfirstrepository
