@@ -36,7 +36,7 @@ pipeline {
       steps {
         container(name: 'kubectl') {
           sh "ls"
-          sh "run_test"
+          sh "./run_test"
         }
       }
     }
