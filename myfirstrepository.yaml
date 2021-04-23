@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: myfirstrepository
-        image: docker.io/rlkamradt/myfirstrepository:latest
+        image: docker.io/rickstyle/myfirstrepository:latest
         ports:
         - containerPort: 3000
         env:
