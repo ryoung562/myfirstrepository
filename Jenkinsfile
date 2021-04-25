@@ -16,7 +16,7 @@ pipeline {
             sh "/kaniko/executor \
                 --dockerfile `pwd`/Dockerfile \
                 --context `pwd` \
-                --destination=docker.io/ryoung562/myfirstrepository:latest"
+                --destination=docker.io/rickstyle/myfirstrepository:latest"
           }
         }
     }
