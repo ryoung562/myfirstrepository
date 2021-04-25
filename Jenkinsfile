@@ -11,12 +11,12 @@ pipeline {
           }
         }
         steps {
-          git 'https://github.com/rkamradt/myfirstrepository'
+          git 'https://github.com/ryoung562/myfirstrepository'
           container(name: 'kaniko') {
             sh "/kaniko/executor \
                 --dockerfile `pwd`/Dockerfile \
                 --context `pwd` \
-                --destination=docker.io/rlkamradt/myfirstrepository:latest"
+                --destination=docker.io/ryoung562/myfirstrepository:latest"
           }
         }
     }
